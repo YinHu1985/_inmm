@@ -11,11 +11,8 @@
 // Windows Header Files:
 #include <windows.h>
 
-
-#define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS      // some CString constructors will be explicit
-
-#include <atlbase.h>
-#include <atlstr.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 // TODO: reference additional headers your program requires here
 //#pragma comment(lib, "ddraw.lib")

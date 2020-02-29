@@ -107,7 +107,6 @@ bool Initialize(void)
         GB2312_CHARSET,OUT_DEFAULT_PRECIS,CLIP_DEFAULT_PRECIS,ANTIALIASED_QUALITY,DEFAULT_PITCH ,L"ËÎÌו");
 
     char tp[50];
-    char tp2[50];
 
     aaa = fopen_s(&fp,"_INMM.ini","r");
     while(!feof(fp))
@@ -321,7 +320,7 @@ extern "C" _INMM_API void TextOutDC2(LPRECT lpRect, int *px, int *py, LPBYTE lpS
             fopen_s(&tplog,"_inmmdebug.txt","w");
         }
         //FILE* tplog;
-        fprintf_s(tplog,"TextOut:\n%s\n",text,300);
+        fprintf_s(tplog,"TextOut:\n%s\n",text);
     }
 
     HDC hdc;
@@ -591,7 +590,7 @@ extern "C" _INMM_API int GetTextWidth(char* text,int magicnum,int c)
             fclose(tplog);
             fopen_s(&tplog,"_inmmdebug.txt","w");
         }
-        fprintf_s(tplog,"GetWidth:\n%s\n",text,300);	
+        fprintf_s(tplog,"GetWidth:\n%s\n",text);	
     }
 
     int result = 0;
@@ -693,6 +692,18 @@ extern "C" _INMM_API void TextOutDC0(int x, int y, LPBYTE lpString, LPDIRECTDRAW
 extern "C" _INMM_API void TextOutDC1(LPRECT lpRect, int x, int y, LPBYTE lpString, LPDIRECTDRAWSURFACE lpDDS, int nMagicCode, DWORD dwColor, DWORD dwFlags)
 {
     TextOutDC2(lpRect, &x, &y, lpString, lpDDS, nMagicCode, dwColor, dwFlags);
+}
+
+extern "C" _INMM_API size_t strnlen0(char* text, size_t maxlen)
+{
+    for (int i = 0; i < maxlen; i++)
+    {
+        if (text[i] == 0)
+        {
+            return i;
+        }
+    }
+    return maxlen;
 }
 
 extern "C" _INMM_API int CalcLineBreak(LPBYTE lpBuffer, const BYTE* lpString)
@@ -826,7 +837,7 @@ extern "C" _INMM_API int CalcLineBreak(LPBYTE lpBuffer, const BYTE* lpString)
                     break;
                 ++ i;
             }
-            if (text[i] == '\n')
+            if (text[i] == '\n' || text[i] == '\r')
                 -- target;
             if (text[i] <= ' ' )
                 break;

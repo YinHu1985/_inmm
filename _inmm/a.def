@@ -12,3 +12,4 @@ TextOutDC1 = TextOutDC1
 TextOutDC2 = TextOutDC2
 GetTextWidth = GetTextWidth
 CalcLineBreak = CalcLineBreak
+strnlen0 = strnlen0
