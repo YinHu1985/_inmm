@@ -1,0 +1,14 @@
+LIBRARY	"_inmm"
+
+EXPORTS
+mciSendCommandA = mciSendCommandA
+timeBeginPeriod = timeBeginPeriod
+timeGetDevCaps = timeGetDevCaps
+timeGetTime = timeGetTime
+timeKillEvent = timeKillEvent
+timeSetEvent = timeSetEvent
+TextOutDC0 = TextOutDC0
+TextOutDC1 = TextOutDC1
+TextOutDC2 = TextOutDC2
+GetTextWidth = GetTextWidth
+CalcLineBreak = CalcLineBreak
